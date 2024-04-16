@@ -1,0 +1,9 @@
+services:
+  pyre:
+    build:
+      context: .
+      dockerfile: Dockerfile.pyre.dev
+    platform: linux/amd64
+    command: pyre
+    volumes:
+      - .:/usr/src/app
