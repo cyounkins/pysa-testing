@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine.base import Engine
 
+engine: Engine = create_engine('sqlite:///test.db')
 
 def my_source() -> str:
     return 'foo'
@@ -11,7 +12,6 @@ def my_sink(foo) -> None:
 
 
 def vulnerable_func() -> None:
-    engine: Engine = create_engine('sqlite:///test.db')
     reveal_type(engine.execute)
     user_input = my_source()
 
